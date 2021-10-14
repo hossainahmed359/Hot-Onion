@@ -1,12 +1,12 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Home from './components/Home/Home';
+
 
 function App() {
   return (
     <div className="App">
-      <h1>React</h1>
-      <h1>React Router </h1>
-      <h1>Firebase </h1>
+      <Home></Home>
     </div>
   );
 }
