@@ -1,0 +1,11 @@
+.food-links a {
+    color: black;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.food-links a:hover {
+    border-bottom:2px solid skyblue;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
