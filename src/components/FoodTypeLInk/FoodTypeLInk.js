@@ -13,7 +13,7 @@ const FoodTypeLInk = ({ foodType }) => {
                     <Nav.Link onClick={() => foodType('l')}>Lunch</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link onClick={() => foodType('d')}>Dinner</Nav.Link>
+                    <Nav.Link onClick={() => foodType('c')}>Dinner</Nav.Link>
                 </Nav.Item>
             </Nav>
         </div>
