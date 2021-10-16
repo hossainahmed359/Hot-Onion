@@ -7,8 +7,8 @@ import useAuth from '../../hooks/useAuthContext';
 const Navigation = () => {
     const { user, logOut } = useAuth()
 
-    console.log(user.email)
     const cartIcon = <FontAwesomeIcon icon={faCartPlus} />
+
     return (
         <div>
             <Navbar bg="light" expand="lg" className="border-bottom">
@@ -22,9 +22,8 @@ const Navigation = () => {
                             {!user.email ?
                                 <Nav.Link as={Link} to="/signup"><Button variant="danger" className="rounded-pill">Sign Up</Button></Nav.Link>
                                 :
-                                <Button onClick={logOut} variant="danger" className="rounded-pill">Log Out</Button>}
-
-
+                                <Button onClick={logOut} variant="danger" className="rounded-pill">Log Out</Button>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
