@@ -8,7 +8,6 @@ const Foods = () => {
     const [foodsName, setFoodsName] = useState('b')
 
     const foodType = type => {
-        setFoodsName('')
         setFoodsName(type)
     }
 
