@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import LoadFoodTypeByName from '../LoadFoodTypeByName/LoadFoodTypeByName';
 
 const Food = ({ foodsName }) => {
@@ -20,7 +21,7 @@ const Food = ({ foodsName }) => {
                     {foods.map(food => foods.indexOf(food) < 6 && <LoadFoodTypeByName key={food.idMeal} food={food}></LoadFoodTypeByName>)}
                 </Row>
                 <div className="text-center my-5">
-                    <button className="btn btn-secondary btn-large rounded">Checkout Our Food</button>
+                    <Link to="/foodmenu"><button className="btn btn-secondary btn-large rounded">Checkout Our Food</button></Link>
                 </div>
             </Container>
         </div>

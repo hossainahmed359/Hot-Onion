@@ -13,11 +13,11 @@ const Navigation = () => {
         <div>
             <Navbar bg="light" expand="lg" className="border-bottom">
                 <Container fluid className="mx-3">
-                    <Navbar.Brand href="#home">Hot Onion</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/home">Hot Onion</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto align-items-center">
-                            <Nav.Link as={Link} to="/home">{cartIcon}</Nav.Link>
+                            <Nav.Link as={Link} to="/foodmenu">{cartIcon}</Nav.Link>
                             {!user.email && <Nav.Link as={Link} to="/signup">Login</Nav.Link>}
                             {!user.email ?
                                 <Nav.Link as={Link} to="/signup"><Button variant="danger" className="rounded-pill">Sign Up</Button></Nav.Link>

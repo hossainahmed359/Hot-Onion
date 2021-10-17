@@ -3,9 +3,11 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 import ProvideContext from './components/Context/ProvideContext';
+import FoodMenu from './components/FoodMenu/FoodMenu';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Navigation from './components/Navigation/Navigation';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register';
 
 
@@ -23,6 +25,9 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
+            <PrivateRoute path="/foodmenu">
+              <FoodMenu></FoodMenu>
+            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>
