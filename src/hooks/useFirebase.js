@@ -18,23 +18,12 @@ const useFirebase = () => {
 
     //Handle Google Sign In
     const googleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                setUser(result.user);
-            }).catch((error) => {
-                setError(error.message);
-            });
+        return signInWithPopup(auth, googleProvider)
     }
 
     //Handle Facebook Sign In
     const facebookSignIn = () => {
-        signInWithPopup(auth, facebookProvider)
-            .then((result) => {
-            })
-            .catch((error) => {
-                // Handle Errors here.
-                setError(error.message)
-            });
+        return signInWithPopup(auth, facebookProvider)
     }
 
     //Handle Sign Out 
@@ -49,22 +38,13 @@ const useFirebase = () => {
 
     //Reagister With Email || Email && Password Required
     const emailRegister = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                // Signed in 
-                setUser(result.user)
-                setError('')
-            })
-            .catch((error) => {
-                setError(error.message);
-            });
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
     //Update User Name
     const updateUserName = userName => {
         updateProfile(auth.currentUser, {
             displayName: userName
-
         })
             .then(() => {
                 //...
@@ -77,15 +57,7 @@ const useFirebase = () => {
 
     //Email Sign In || Email && Password Required
     const emailSignIn = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                // Signed in 
-                setUser(result.user)
-                // ...
-            })
-            .catch((error) => {
-                setError(error.message);
-            });
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     //(User LogIn || LogOut) Observer

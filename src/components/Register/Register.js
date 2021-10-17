@@ -4,9 +4,14 @@ import './Register.css'
 
 import img from '../../images/logo2.png'
 import useAuth from '../../hooks/useAuthContext';
+import { useHistory, useLocation } from 'react-router';
 
 const Register = () => {
     const { googleSignIn, emailRegister, updateUserName, facebookSignIn, emailSignIn, error, setError } = useAuth();
+
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location.state?.from || './'
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -35,15 +40,59 @@ const Register = () => {
         updateUserName(name);
     }, [emailRegister])
 
+    const emailPasswordRegister = () => {
+        emailRegister(email, password)
+            .then((result) => {
+                // Signed in 
+                history.push(redirect_uri)
+                setError('')
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+    }
+
+    const emailPasswordSignIn = () => {
+        emailSignIn(email, password)
+            .then((result) => {
+                // Signed in 
+                history.push(redirect_uri)
+                // ...
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+    }
+
     const handleEmailRegistraion = e => {
         e.preventDefault();
 
-        !isExist ? emailRegister(email, password) : emailSignIn(email, password)
+        !isExist ? emailPasswordRegister() : emailPasswordSignIn()
 
         //reset Form
         document.forms['register-form'].reset()
         //setError
         setError('')
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then((result) => {
+                history.push(redirect_uri)
+            }).catch((error) => {
+                setError(error.message);
+            });
+    }
+
+    const handleFacebookSignIn = () => {
+        facebookSignIn()
+            .then((result) => {
+                history.push(redirect_uri)
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                setError(error.message)
+            });
     }
 
     return (
@@ -54,8 +103,8 @@ const Register = () => {
                         <img className="mx-auto w-50 " src={img} alt="" />
                     </div>
                     <div className="text-center">
-                        <Button onClick={googleSignIn} variant="success" size="md" className="my-2 w-100 py-3">Continue With Google</Button>
-                        <Button onClick={facebookSignIn} variant="primary" size="md" className="my-2 w-100 py-3 mb-3">Continue With Facebook</Button>
+                        <Button onClick={handleGoogleSignIn} variant="success" size="md" className="my-2 w-100 py-3">Continue With Google</Button>
+                        <Button onClick={handleFacebookSignIn} variant="primary" size="md" className="my-2 w-100 py-3 mb-3">Continue With Facebook</Button>
                         <h2>OR</h2>
                     </div>
                     <Form id="register-form" onSubmit={handleEmailRegistraion}>
